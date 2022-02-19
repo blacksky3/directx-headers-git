@@ -10,7 +10,7 @@
 
 pkgname=directx-headers-git
 pkgdesc="DirectX headers for using D3D12"
-pkgver=1.4.9.r76.g8f7080a
+pkgver=1.4.10.r82.g980971e
 pkgrel=1
 arch=('x86_64')
 makedepends=('meson' 'git' 'ninja')
@@ -26,7 +26,7 @@ pkgver(){
   cd ${srcdir}/DirectX-Headers/
   # cutting off 'foo-' prefix that presents in the git tag
   #git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-  git describe --long --tags --exclude *preview | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --exclude *preview --exclude *600* | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 
   #git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
   #git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
