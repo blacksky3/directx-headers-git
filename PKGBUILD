@@ -25,11 +25,7 @@ md5sums=(SKIP)
 pkgver(){
   cd ${srcdir}/DirectX-Headers/
   # cutting off 'foo-' prefix that presents in the git tag
-  #git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   git describe --long --tags --exclude *preview | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-
-  #git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-  #git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build(){
