@@ -12,14 +12,14 @@ pkgname=directx-headers-git
 pkgdesc="DirectX headers for using D3D12"
 pkgver=1.600.10
 pkgrel=1
-arch=('x86_64')
-makedepends=('meson' 'git' 'ninja')
-conflicts=('directx-headers')
-provides=('directx-headers' 'directx-headers-git')
-url="https://github.com/microsoft/DirectX-Headers"
-license=('MIT')
-source=("DirectX-Headers::git+https://github.com/microsoft/DirectX-Headers.git")
-md5sums=('SKIP')
+arch=(x86_64)
+url='https://github.com/microsoft/DirectX-Headers'
+license=(MIT)
+makedepends=(meson git ninja)
+conflicts=(directx-headers)
+provides=(directx-headers directx-headers-git)
+source=(git+https://github.com/microsoft/DirectX-Headers.git)
+md5sums=(SKIP)
 
 
 pkgver(){
@@ -33,16 +33,6 @@ pkgver(){
 }
 
 build(){
-if [[ $_compiler = "1" ]]; then
-  export CC="gcc"
-  export CXX="g++"
-elif [[ $_compiler = "2" ]]; then
-  export CC="clang"
-  export CXX="clang++"
-else
-  export CC="gcc"
-  export CXX="g++"
-fi
 # LTO breaks mesa...
 export CXXFLAGS="$CXXFLAGS -fno-lto"
 
